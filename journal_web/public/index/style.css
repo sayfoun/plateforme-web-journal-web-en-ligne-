@@ -1,0 +1,211 @@
+*{box-sizing:border-box;}
+ .wow { visibility: hidden; }
+html , body{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    height:100%;
+}.headerleft{
+     width:60%;
+     float: left;
+}
+.headerright{
+ padding-left: 300px;
+width:40%;
+float:left;
+
+}
+.headerleft a{
+
+    color:white;
+    font-family: "Ubuntu";
+    padding: 10px;
+    line-height: 50px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.headerright a{
+
+    color:white;
+    font-family: "Ubuntu";
+    padding: 10px;
+    line-height: 50px;
+    font-size: 20px;
+    text-decoration: none;
+}
+header{
+    z-index: 100000;
+    padding: 0;
+    position: fixed;
+    background-color: #000;
+    width:100%;
+}
+
+
+
+.item1:hover{border-bottom:5px solid white;}
+.item2:hover{border-bottom:5px solid #ff6b6b;
+color:#ff6b6b;}
+.item3:hover{border-bottom:5px solid #1dd1a1;
+color:#1dd1a1;}
+.item4:hover{border-bottom:5px solid #feca57;
+color:#feca57;}
+.item5:hover{border-bottom:5px solid #ff6b6b;
+color:#ff6b6b;
+      }
+      .item6:hover{
+ border-bottom:5px solid #ff6b6b;
+color:#ff6b6b;}
+      
+.container{
+   
+    background-image: url("/img/bg.jpeg");
+    background-size: cover;
+    padding: 100px;
+    margin: 0;
+    width:100%;
+    height:100%;
+    background-color: antiquewhite;
+    text-align: center;
+    font-family: "Ubuntu";
+    font-size: 60px;
+    
+}
+
+.container p{
+    
+    border-radius: 10px;
+    padding: 10px;
+    color:white;
+    margin-top: 15%;
+    
+}
+.insbtn{
+    padding:20px 50px ;
+    color:white;
+    background-color: ;
+    border:none;
+    background-color: #55efc4;
+    font-size: 20px;
+    border-radius: 8px;
+    font-family: "Ubuntu";
+}
+.fixedheader{
+    width:100%;
+    height:50px;
+    background-color: darkslategrey;
+}
+
+/*  A propos DIV  */
+.apropos{
+    padding: 70px 30px;
+    margin:0;
+    width:100%;
+    height:100%;
+    background-color:#ff6b6b ;
+    color:white;
+    text-align: center;
+}
+.apropos p{
+    line-height: 40px;
+    
+    
+  
+    font-family: "Ubuntu";
+    font-size: 25px;
+}
+.aproposimg{
+    
+   
+    
+    width:320px;
+    height:320px;
+    
+}
+
+/*  Notre service DIV  */
+
+.notreservice{
+    padding:70px 10px;
+    margin:0;
+    width:100%;
+    height:100%;
+    background-color:#feca57 ;
+    color:white;
+    text-align: center;
+    
+}
+.notreservice p{
+    line-height: 40px;
+    
+    
+  
+    font-family: "Ubuntu";
+    font-size: 25px;
+}
+.serviceimg{
+    
+   
+    
+    width:320px;
+    height:320px;
+    
+}
+
+
+/*  contact DIV  */
+
+.contact{
+     padding:150px 10px;
+    margin:0;
+    width:100%;
+    height:100%;
+    background-color:#1dd1a1 ;
+    color:white;
+    text-align: center;
+    
+}
+.divcontact{
+    box-sizing: border-box;
+    
+    padding: 10px;
+    clear: both;
+    width:60%;
+    min-width: 400px;
+    margin:0 auto;
+}
+textarea{
+    height:200px;
+    padding: 20px;
+    font-family: "Ubuntu";
+    font-size: 20px;
+    width:100%;
+}
+.input{
+    padding: 10px;
+    font-family: "Ubuntu";
+    
+    font-size: 20px;
+    float: left;
+    width:50%;
+    height:60px;
+}
+input[type="submit"]{
+    cursor: pointer;
+    border-radius: 10px;
+    clear: both;
+    border:none;
+    background-color:white ;
+    color:cadetblue;
+    width:50%;
+    height:60px;
+    padding: 10px;
+    font-family: "Ubuntu";
+    font-size: 20px;
+    transition: all 2s;
+    
+}
+input[type="submit"]:hover{
+    background-color:cadetblue ;
+    color:white;
+}

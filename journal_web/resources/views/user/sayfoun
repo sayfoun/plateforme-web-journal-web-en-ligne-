@@ -1,0 +1,226 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use Response;
+use App\Post;
+use App\User;
+use App\Like;
+
+
+class LikeController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+  
+    public function like(Request $request)
+    {   //les de request
+        
+       
+       $like_s = $request->like_s;
+       $post_id = $request->post_id;
+       $is_like = 0;
+    
+     //fibd like
+       $like=DB::table('likes')
+       ->where('post_id', $post_id)
+       ->where('user_id', Auth::user()->id)
+       ->first();
+
+       if(!$like)
+       {
+        $newlike= new Like;
+        $newlike->post_id=$post_id;
+        $newlike->user_id= Auth::user()->id;
+        $newlike->like=1;
+        $newlike->save();
+        $is_like = 1;
+       
+       }
+       elseif($like->like == 1)
+       {
+        DB::table('likes')
+        ->where('post_id', $post_id)
+       ->where('user_id', Auth::user()->id)
+       ->delete();
+       $is_like = 0;
+       
+       }
+       elseif($like->like == 0)
+       {
+
+       DB::table('likes')
+           ->where('post_id', $post_id)
+           ->where('user_id', Auth::user()->id)
+           ->update(['like => 1']);
+      $is_like = 11;
+       }
+       $count_like=DB::table('likes')->where('post_id', $post_id)->count();
+       $response= array('is_like' => $is_like,'count_like' =>$count_like, );
+       return response()->json( $response, 200);
+       
+       return response()->json( $response, 200);
+
+
+    }
+
+public function dislike(Request $request)
+    {   //les de request
+        
+       $like_s = $request->like_s;
+       $post_id = $request->post_id;
+       $is_like = 0;
+    
+     //fibd like
+       $like=DB::table('likes')
+       ->where('post_id', $post_id)
+       ->where('user_id', Auth::user()->id)
+       ->first();
+
+       if(!$like)
+       {
+        $newlike= new Like;
+        $newlike->post_id=$post_id;
+        $newlike->user_id= Auth::user()->id;
+        $newlike->like=1;
+        $newlike->save();
+        $is_like = 1;
+       
+       }
+       elseif($like->like == 1)
+       {
+        DB::table('likes')
+        ->where('post_id', $post_id)
+       ->where('user_id', Auth::user()->id)
+       ->delete();
+       $is_like = 0;
+       
+       }
+       elseif($like->like == 0)
+       {
+
+       DB::table('likes')
+           ->where('post_id', $post_id)
+           ->where('user_id', Auth::user()->id)
+           ->update(['like => 1']);
+      $is_like = 11;
+       }
+       $count_like=DB::table('likes')->where('post_id', $post_id)->count();
+       $response= array('is_like' => $is_like,'count_like' =>$count_like, );
+       return response()->json( $response, 200);
+
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function singaler(Request $requset)
+    {
+          $res=DB::table('likes')->get();
+        return response()->json($res, 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
+
+
+ @endif
+ @php 
+ $like_count=0;
+ $dislike_count=0;
+ $like_status="btn-secondry";
+ $dislike_status="btn-secondry";
+ @endphp
+
+
+ @foreach($post->likes as $like)
+ @php
+ if($like->like==1)
+ {
+ $like_count++;
+ }
+ if($like->like==0)
+
+
+ {
+ $dislike_count++;
+
+ }
+
+if(Auth::check())
+{
+ if($like->like == 1 && $like->user_id == Auth::user()->id)
+ {
+ $like_status= "btn-success";
+ }
+  if($like->like == 0 && $like->user_id == Auth::user()->id)
+ {$dislike_status= "btn-danger";}
+}
+@endphp
+
+@endforeach
